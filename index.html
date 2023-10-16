@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script type="text/javascript">
+    const App = () => {
+      const [users, setUsers] = React.useState([]);
+
+      const addUser = () => {
+        const name = prompt("Nhập tên người dùng:");
+        const email = prompt("Nhập địa chỉ email:");
+        setUsers([...users, { name, email }]);
+      }
+
+      return (
+        <div class="modal">
+          <div class="container">
+            <div class="container_img">
+              <div class="img">
+                <img class="image" src="images/1.jpg" alt="" />
+              </div>
+              <div class="container_contact">
+                <p>Email:</p>
+                <a href="" class="no-underline">support@akaalwebsoft.com</a>
+                <a href="" class="no-underline">www.webschoolmanager.com</a>
+              </div>
+            </div>
+            <div class="contain_login">
+              <p class="title">Please Login!</p>
+              <div class="container_input">
+                <input type="text" class="email button" placeholder="Nhập email" />
+                <input type="text" class="pass button" placeholder="Nhập mật khẩu" />
+              </div>
+              <div class="button_login">
+                <button type="button" class="btn btn-warning">Login</button>
+                <p><a href="" class="no-underline">Forgot password?</a></p>
+              </div>
+            </div>
+            <div class="user-manager">
+              <h2>Quản lý người dùng</h2>
+              <button onClick={addUser}>Thêm người dùng</button>
+              {users.map((user, index) => (
+                <div key={index} className="user">
+                  <h3>{user.name}</h3>
+                  <p>{user.email}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+
+</html>
